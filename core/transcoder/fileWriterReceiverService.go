@@ -81,7 +81,7 @@ func (s *FileWriterReceiverService) uploadHandler(w http.ResponseWriter, r *http
 func (s *FileWriterReceiverService) fileWritten(path string) {
 	if utils.GetRelativePathFromAbsolutePath(path) == "hls/stream.m3u8" {
 		s.callbacks.MasterPlaylistWritten(path)
-	} else if strings.HasSuffix(path, ".ts") {
+	} else if strings.HasSuffix(path, ".m4s") || strings.HasSuffix(path, ".mp4") {
 		s.callbacks.SegmentWritten(path)
 	} else if strings.HasSuffix(path, ".m3u8") {
 		s.callbacks.VariantPlaylistWritten(path)

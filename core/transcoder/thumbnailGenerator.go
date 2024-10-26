@@ -65,7 +65,7 @@ func fireThumbnailGenerator(segmentPath string, variantIndex int) error {
 	var modTime time.Time
 	var names []string
 	for _, f := range files {
-		if path.Ext(f.Name()) != ".ts" {
+		if path.Ext(f.Name()) != ".m4s" {
 			continue
 		}
 
@@ -98,6 +98,7 @@ func fireThumbnailGenerator(segmentPath string, variantIndex int) error {
 		"-y",                 // Overwrite file
 		"-threads 1",         // Low priority processing
 		"-t 1",               // Pull from frame 1
+		"-f mp4",             // Format
 		"-i", mostRecentFile, // Input
 		"-f image2",  // format
 		"-vframes 1", // Single frame
@@ -128,6 +129,7 @@ func makeAnimatedGifPreview(sourceFile string, outputFile string) {
 		ffmpegPath,
 		"-y",             // Overwrite file
 		"-threads 1",     // Low priority processing
+		"-f mp4",         // Format
 		"-i", sourceFile, // Input
 		"-t 1", // Output is one second in length
 		"-filter_complex", "\"[0:v] fps=8,scale=w=480:h=-1:flags=lanczos,split [a][b];[a] palettegen=stats_mode=full [p];[b][p] paletteuse=new=1\"",

@@ -214,9 +214,9 @@ func (t *Transcoder) getString() string {
 
 		"-hls_time", strconv.Itoa(t.currentLatencyLevel.SecondsPerSegment), // Length of each segment
 		"-hls_list_size", strconv.Itoa(t.currentLatencyLevel.SegmentCount), // Max # in variant playlist
+		"-hls_segment_type", "fmp4",
 		hlsOptionsString,
 		hlsEventString,
-		"-segment_format_options", "mpegts_flags=mpegts_copyts=1",
 
 		// Video settings
 		t.codec.ExtraArguments(),
@@ -226,9 +226,9 @@ func (t *Transcoder) getString() string {
 		// Filenames
 		"-master_pl_name", "stream.m3u8",
 
-		"-hls_segment_filename", localListenerAddress + "/%v/stream-" + t.segmentIdentifier + "-%d.ts", // Send HLS segments back to us over HTTP
+		"-hls_segment_filename", localListenerAddress + "/%v/stream-" + t.segmentIdentifier + "-%d.m4s", // Send HLS segments back to us over HTTP
 		"-max_muxing_queue_size", "400", // Workaround for Too many packets error: https://trac.ffmpeg.org/ticket/6375?cversion=0
-
+		"-force_key_frames", "\"expr:gte(t,n_forced*1)\"",
 		"-method PUT",           // HLS results sent back to us will be over PUTs
 		"-http_persistent", "1", // Ensures persistent HTTP connections
 

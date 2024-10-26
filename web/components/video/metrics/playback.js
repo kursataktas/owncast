@@ -64,7 +64,7 @@ class PlaybackMetrics {
     // Override the xhr function to track segment download time.
     // eslint-disable-next-line no-param-reassign
     videojs.Vhs.xhr = (...args) => {
-      if (args[0].uri.match('.ts')) {
+      if (args[0].uri.match('.m4s')) {
         const start = new Date();
 
         const cb = args[1];

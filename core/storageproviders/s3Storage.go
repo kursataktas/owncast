@@ -316,7 +316,7 @@ func (s *S3Storage) retrieveAllVideoSegments() ([]s3object, error) {
 	// Filter out non-video segments
 	allObjects := []s3object{}
 	for _, item := range allObjectsListResponse.Contents {
-		if !strings.HasSuffix(*item.Key, ".ts") {
+		if !strings.HasSuffix(*item.Key, ".m4s") {
 			continue
 		}
 
