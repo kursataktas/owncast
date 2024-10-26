@@ -20,6 +20,7 @@ type Datastore struct {
 	DbLock *sync.Mutex
 }
 
+// WarmCache pre-caches all configuration values in memory.
 func (ds *Datastore) WarmCache() {
 	log.Traceln("Warming config value cache")
 

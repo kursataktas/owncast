@@ -56,10 +56,10 @@ func TestMain(m *testing.M) {
 	if err != nil {
 		panic(err)
 	}
+	data.SetupPersistence(dbFile.Name())
 
 	configRepository := configrepository.Get()
 
-	data.SetupPersistence(dbFile.Name())
 	configRepository.SetServerURL("https://my.cool.site.biz")
 
 	m.Run()
