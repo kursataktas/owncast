@@ -68,6 +68,9 @@ Owncast is an open source, self-hosted, decentralized, single user live video st
     <a href="https://opencollective.com/owncast">
       <img alt="Open Collective backers and sponsors" src="https://img.shields.io/opencollective/all/owncast?style=for-the-badge">
     </a>
+    <a href="https://gurubase.io/g/owncast">
+      <img alt="Gurubase" src="https://img.shields.io/badge/Gurubase-Ask%20Owncast%20Guru-006BFF?style=for-the-badge">
+    </a>
 </div>
 
 ---
